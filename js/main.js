@@ -22,7 +22,7 @@ function init() {
       hide_form: true,
       dbOpen: '',
       db: '',
-      version: "0.1.0"
+      version: "0.1.1"
     },
     created: function(){
       var total = localStorage.getItem('total')

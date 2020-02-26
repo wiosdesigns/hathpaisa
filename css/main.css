@@ -1,0 +1,185 @@
+:root{
+  --fg: #ffffff;
+  --t1: #2C704e;
+  --bg1: #15151e;
+  --bg2: #0a060a;
+  --t2: #702C38;
+}
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: font1;
+  src: url(/assets/inconsolata.ttf);
+}
+html{
+  scroll-behavior: smooth;
+}
+body {
+  font-family: font1;
+  padding: 0px;
+  margin: 0px;
+  font-size: 1rem;
+  background: var(--bg2);
+  color: var(--fg);
+  text-align: center;
+}
+#app{
+  display: grid;
+  max-height: 100vh;
+  grid-template-rows: auto 1fr;
+}
+header {
+  display: grid;
+  grid-template-columns: 2rem 1fr auto;
+  padding: 1rem;
+  text-align: left;
+  grid-gap: 1rem;
+  align-items: center;
+  box-shadow: 0 0.125rem 1rem rgba(0,0,0,0.8);
+}
+header a{
+  color: var(--fg);
+}
+header>img{
+  width: 100%;
+  height: auto;
+}
+header h2{
+  font-weight: 200;
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+}
+section{
+  padding: 1rem;
+  overflow-y: scroll;
+  padding-bottom: 5rem;
+}
+
+
+.transaction.debit{
+  text-align: right  
+}
+
+.transaction.credit{
+  text-align: left  
+}
+
+.transaction p{
+  display: inline-block;
+  width: 75vw;
+  border-width: 0.125rem;
+  border-style: solid;
+  border-radius: 1rem;
+}
+.transaction.debit p{
+  border-color: var(--t2);
+}
+.transaction.credit p{
+  border-color: var(--t1);
+}
+
+.transaction p>span.title{
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.transaction.debit p>span.title{
+  background: var(--t2);
+}
+.transaction.credit p>span.title{
+  background: var(--t1);
+}
+
+.transaction p>span.amount{
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 3rem;
+}
+.transaction.debit p>span.amount{
+  color: var(--t2);
+}
+.transaction.credit p>span.amount{
+  color: var(--t1);
+}
+.transaction p>span.tag{
+  display: block;
+  padding: 0.5rem 1rem;
+}
+.transaction.debit p>span.tag{
+  color: var(--t2);
+}
+.transaction.credit p>span.tag{
+  color: var(--t1);
+}
+.transaction p>span.comment{
+  display: block;
+  padding: 0.5rem 1rem;
+}
+
+
+div.form {
+  position: fixed;
+  background: var(--bg1);
+  left: 0;
+  width: 100%;
+  bottom: 0rem;
+  height: 11.5rem;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 3.5rem 1fr 1fr 1fr;
+  justify-items: start;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  grid-gap: 1rem;
+  border-radius: 1rem 1rem  0 0;
+  transition: height 0.1s;
+}
+div.form:not(.hidden){
+  height: 11.5rem;
+}
+div.form.hidden{
+  height: 4.5rem;
+}
+div.form h3{
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+div.form button{
+  font-size: 1.5rem;
+  padding: 0.25rem 1.5rem;
+  outline: none;
+  background: var(--fg);
+  color: var(--bg2);
+  font-family: font1;
+  border-radius: 5rem;
+  text-transform: uppercase;
+  border: none;
+  justify-self: end;
+}
+div.form input,div.form select{
+  width: 100%;
+  font-size: 1.5rem;
+  outline: none;
+  border: none;
+  font-family: font1;
+  background: none;
+  border-bottom: 0.125rem solid var(--fg);
+  color: var(--fg);
+}
+div.form option{
+  background: var(--bg1);
+  color: var(-fg);
+}
+div.form input.debit:focus{
+  color: var(--t2);
+  border-color: var(--t2);
+}
+div.form input.credit:focus{
+  color: var(--t1);
+  border-color: var(--t1);
+}
+

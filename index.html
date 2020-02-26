@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+  <title>hathPaisa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1d201f">
+  <meta charset="utf-8">
+  <meta name="description" content="hathPaisa | Personal Finance Tracker">
+  
+  <meta property="og:title" content="hathPaisa | Personal Finance Tracker" />
+  <meta property="og:url" content="https://hathpaisa.wiosdesigns.xyz" />
+  <meta property="og:description" content="A simple PWA to track personal finances">
+  <meta property="og:image" content="/assets/ogicon.png">
+  <meta property="og:type" content="website" />
+  
+  <meta name="twitter:card" content="app"></meta>
+  <meta property="twitter:image" content="/assets/ogbg.png">
+  
+  
+  <link rel="shortcut icon" type="image/png" href="/assets/icon.png"/>
+  <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+  <script src="/js/vue.min.js"></script>
+  <script src="/sw.js"></script>
+  
+  <script src="/js/main.js"></script>
+  
+</head>
+<body onload="init()">
+<div id="app">
+  <header>
+    <img src="/assets/icon.png">
+    <h2>{{appname}}</h2>
+    <a target="_blank" href="https://github.com/wiosdesigns/hathpaisa">v{{version}}</a>
+  </header>
+  <section>
+    <div class="transaction" 
+      v-for="t in transactions" 
+      v-bind:class="{debit: t.amount<0, credit: t.amount>=0}">
+      <p>
+        <span class="title">{{t.id}} ({{t.date}})</span>
+        <span class="amount">{{currency}}{{Math.abs(t.amount)}}</span>
+        <span class="tag">#{{t.type}}</span>
+        <span class="comment">{{t.comment}}</span>
+      </p>  
+    </div>
+  </section>
+  <div class="form" v-bind:class="{hidden: hide_form}">
+    <h3>{{currency}}{{balance}}</h3>
+    <button v-if="hide_form" v-on:click="hide_form=false">+/-</button>
+    <button v-else v-on:click="hide_form=true">x</button>
+    <select v-model="new_type">
+      <option value="">(Type)</option>
+      <option value="OpeningBalance">Opening Balance</option>
+      <option value="Commute">Commute</option>
+      <option value="Rent">Rent</option>
+      <option value="Food">Food</option>
+      <option value="Shopping">Shopping</option>
+      <option value="Salary">Salary</option>
+      <option value="MoneyReturned">Money Returned</option>
+      <option value="MoneyLent">Money Lent</option>
+      <option value="ErrorAdjust">Error Adjust</option>
+      <option value="CloseBalance">Close Balance</option>
+      <option value="Others">Others</option>
+      
+    </select>
+    <input type="number" v-bind:class="{debit: new_amount<0, credit: new_amount>0}" v-model="new_amount">
+    <input type="text" v-model="new_comment" placeholder="(comments)">
+    <button v-on:click="addTransaction">Add</button>
+    
+  </div>  
+</body>
+</html>

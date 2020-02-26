@@ -13,7 +13,8 @@ self.addEventListener('install', function(e) {
         '/assets/ogbg.png',
         '/css/main.css',
         '/js/main.js',
-        '/js/vue.min.js'
+        '/js/vue.min.js',
+        '/manifest.json'
       ]);
     })
   );

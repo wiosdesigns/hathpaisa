@@ -1,13 +1,13 @@
 {
-  "name": "WCard",
-  "short_name": "WCard",
+  "name": "hathPaisa",
+  "short_name": "hathPaisa",
   "display": "standalone",
   "start_url": "/index.html",
-  "theme_color": "#403899",
-  "background_color": "#2b303a",
+  "theme_color": "#ffffff",
+  "background_color": "#0a060a",
   "icons": [
     {
-      "src": "assets/img/logo.png",
+      "src": "assets/icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
